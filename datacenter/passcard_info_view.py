@@ -14,9 +14,9 @@ def passcard_info_view(request, passcode):
     passcard = get_object_or_404(Passcard, passcode=passcode)
     this_passcard_visits = Visit.objects.filter(passcard=passcard)
 
-    this_passcard_visits_list = []
+    this_passcard_visits_serialized = []
     for visit in this_passcard_visits:
-        this_passcard_visits_list.append({
+        this_passcard_visits_serialized.append({
             'entered_at': localtime(visit.entered_at),
             'duration': format_duration(get_duration(visit)),
             'is_strange': is_visit_long(visit),
@@ -24,6 +24,6 @@ def passcard_info_view(request, passcode):
 
     context = {
         'passcard': passcard,
-        'this_passcard_visits': this_passcard_visits_list,
+        'this_passcard_visits': this_passcard_visits_serialized,
     }
     return render(request, 'passcard_info.html', context)
