@@ -5,9 +5,9 @@ from django.utils.timezone import localtime
 
 from datacenter.models import Passcard
 from datacenter.models import Visit
-from datacenter.time_tracking_passcard import get_duration
-from datacenter.time_tracking_passcard import format_duration
-from datacenter.time_tracking_passcard import is_visit_long
+from datacenter.time_tracking import get_duration
+from datacenter.time_tracking import format_duration
+from datacenter.time_tracking import is_visit_long
 
 
 def passcard_info_view(request, passcode):
