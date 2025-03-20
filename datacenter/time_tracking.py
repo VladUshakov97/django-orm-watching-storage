@@ -7,10 +7,10 @@ DEFAULT_VISIT_MINUTES = 60
 
 def get_duration(visit):
     now = localtime()
-    return now - visit.entered_at
     if visit.leaved_at:
         return visit.leaved_at - visit.entered_at
-    return timedelta()
+    else:    
+        return now - visit.entered_at
 
 
 def format_duration(duration):
