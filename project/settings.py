@@ -1,4 +1,8 @@
+from environs import Env
 import os
+
+env = Env()
+env.read_env()
 
 DATABASES = {
     'default': {
@@ -15,7 +19,7 @@ INSTALLED_APPS = ['datacenter']
 
 SECRET_KEY = 'REPLACE_ME'
 
-DEBUG = True
+DEBUG = env.bool("DEBUG", default=False)
 
 ROOT_URLCONF = 'project.urls'
 
